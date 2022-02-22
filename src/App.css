@@ -55,6 +55,7 @@
   display: flex;
   flex-flow: column;
   gap: 2em;
+  height: auto;
   margin: 2em;
   width: 100%;
 }
