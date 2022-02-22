@@ -2,26 +2,14 @@ import React, { useState } from 'react';
 import './App.css';
 
 import * as Mui from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import FormatPaintIcon from '@mui/icons-material/FormatPaint';
 import PaletteIcon from '@mui/icons-material/Palette';
 
 
-const useStyles = makeStyles({
-  copy_button: {
-    color: 'white',
-    "&.active": {
-      background:'black',
-    },
-  },
-});
-
 const App = () => {
   const [hexColor, setHexColor] = useState("#3CB371");
-  const [snackOpen, setSnackOpen] = useState(true);
-
-  const classes = useStyles();
+  const [snackOpen, setSnackOpen] = useState(false);
   
   function handleNewColor() {
     let HEX = Math.floor(Math.random() * (16 ** 6)).toString(16);
@@ -29,25 +17,16 @@ const App = () => {
     console.log(`${HEX}`);
     setHexColor(HEX);
   }
-
   function copyMessage() {
     console.log(`Copied: ${hexColor}`);
     navigator.clipboard.writeText(hexColor);
     setSnackOpen(true);
   }
-
   function handleSnackClose(event, reason) {
     // if (reason !== "clickaway") return;
     console.log(false);
     setSnackOpen(false);
   }
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false);
-  };
   
   return (
     <>
@@ -93,7 +72,6 @@ const App = () => {
             sx={{
               backgroundColor: "rgba(0, 0, 0, .4)",
             }}
-            className={classes.copy_button}
           >
             Copy!
           </Mui.Button>
