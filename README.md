@@ -1,8 +1,7 @@
 # ColorMaker — `mui-color-gen`
+<img src="https://user-images.githubusercontent.com/70860732/155211218-6d4047ee-1b1b-4b56-a415-aa017e90e6e5.png" width="50%" align="right" />
 
 Try it out: [colormaker.vercel.app](https://colormaker.vercel.app)
-
-<img src="https://user-images.githubusercontent.com/70860732/155211218-6d4047ee-1b1b-4b56-a415-aa017e90e6e5.png" width="50%" align="right" />
 
 ## Technologies I used...
 * React

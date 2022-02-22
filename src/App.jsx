@@ -31,26 +31,20 @@ const App = () => {
   return (
     <>
       <Mui.Stack spacing={2}>
-        <h1 className="colored-header">Random Color Generator</h1>
-        <p id="credits">Made by <a href="https://github.com/KennyOliver">Kenneth Oliver</a></p>
+        <div>
+          <h1 className="colored-header">&lt;ColorMaker /&gt;</h1>
+          <p id="subtitle">a random color generator</p>
+          <p id="credits">Made by <a href="https://github.com/KennyOliver">Kenneth Oliver</a></p>
+        </div>
         <div className="flex-container">
           <ColorBox />
           <GeneratorButton />
         </div>
       </Mui.Stack>
-      <Mui.Snackbar 
-        open={snackOpen}
-        message={"Copied!"}
-        autoHideDuration={1500}
-        onClose={handleSnackClose}
-      >
-        <Mui.Alert icon={<PaletteIcon sx={{color: hexColor}} />} severity="success" sx={{background: "#363636", color: "white"}}>
-          <Mui.AlertTitle>Success!</Mui.AlertTitle>
-          I've copied <span style={{color: hexColor}}>{hexColor}</span> for you!
-        </Mui.Alert>
-      </Mui.Snackbar>
+      <CopySnackBar />
     </>
   );
+  
   function ColorBox() {
     return (
       <div>
@@ -94,6 +88,21 @@ const App = () => {
           }}
         >Generate!</Mui.Button>
       </div>
+    )
+  }
+  function CopySnackBar() {
+    return (
+      <Mui.Snackbar 
+        open={snackOpen}
+        message={"Copied!"}
+        autoHideDuration={1500}
+        onClose={handleSnackClose}
+      >
+        <Mui.Alert icon={<PaletteIcon sx={{color: hexColor}} />} severity="success" sx={{background: "#363636", color: "white"}}>
+          <Mui.AlertTitle>Success!</Mui.AlertTitle>
+          I've copied <span style={{color: hexColor}}>{hexColor}</span> for you!
+        </Mui.Alert>
+      </Mui.Snackbar>
     )
   }
 }

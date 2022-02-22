@@ -1,7 +1,16 @@
-main {
-  text-align: center;
-  vertical-align: center;
-  line-height: 100vh
+@keyframes wriggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
 }
 
 .colored-header {
@@ -11,6 +20,10 @@ main {
   text-align: center;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.colored-header ~ #subtitle {
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
 }
 
 #credits {
@@ -25,6 +38,16 @@ main {
   background-repeat: repeat-x;
   background-size: 100% .1em;
   background-position: 0 95%;
+  transition: transform .3s ease-in-out;
+}
+
+#credits > a:hover {
+  animation: wriggle .3s linear;
+  background: linear-gradient(to right, #30E8BF, #F94D4D);
+  background-position: 0 0;
+  display: inline-block;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .flex-container {
@@ -32,5 +55,6 @@ main {
   display: flex;
   flex-flow: column;
   gap: 2em;
+  margin: 2em;
   width: 100%;
 }
