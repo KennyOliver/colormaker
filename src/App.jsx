@@ -5,6 +5,7 @@ import * as Mui from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import FormatPaintIcon from '@mui/icons-material/FormatPaint';
+import PaletteIcon from '@mui/icons-material/Palette';
 
 
 const useStyles = makeStyles({
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
 
 const App = () => {
   const [hexColor, setHexColor] = useState("#3CB371");
+  const [snackOpen, setSnackOpen] = useState(true);
 
   const classes = useStyles();
   
@@ -31,7 +33,21 @@ const App = () => {
   function copyMessage() {
     console.log(`Copied: ${hexColor}`);
     navigator.clipboard.writeText(hexColor);
+    setSnackOpen(true);
   }
+
+  function handleSnackClose(event, reason) {
+    // if (reason !== "clickaway") return;
+    console.log(false);
+    setSnackOpen(false);
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
   
   return (
     <>
@@ -43,6 +59,17 @@ const App = () => {
           <GeneratorButton />
         </div>
       </Mui.Stack>
+      <Mui.Snackbar 
+        open={snackOpen}
+        message={"Copied!"}
+        autoHideDuration={1500}
+        onClose={handleSnackClose}
+      >
+        <Mui.Alert icon={<PaletteIcon sx={{color: hexColor}} />} severity="success" sx={{background: "#363636", color: "white"}}>
+          <Mui.AlertTitle>Success!</Mui.AlertTitle>
+          I've copied <span style={{color: hexColor}}>{hexColor}</span> for you!
+        </Mui.Alert>
+      </Mui.Snackbar>
     </>
   );
   function ColorBox() {
