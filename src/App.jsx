@@ -31,7 +31,6 @@ const App = () => {
   function copyMessage() {
     console.log(`Copied: ${hexColor}`);
     navigator.clipboard.writeText(hexColor);
-    return;
   }
   
   return (
@@ -40,48 +39,59 @@ const App = () => {
         <h1 className="colored-header">Random Color Generator</h1>
         <p id="credits">Made by <a href="https://github.com/KennyOliver">Kenneth Oliver</a></p>
         <div className="flex-container">
-          <div>
-            <Mui.Box
-              sx={{
-                backgroundColor: hexColor,
-                borderRadius: 2,
-                boxShadow: "0 0 .4em black",
-                maxWidth: 1/1,
-                p: 10,
-                textAlign: "center",
-              }}
-            >
-              <Mui.Button
-                onClick={copyMessage}
-                variant="contained"
-                color="secondary"
-                endIcon={<FormatPaintIcon />}
-                sx={{
-                  backgroundColor: "rgba(0, 0, 0, .4)",
-                }}
-                className={classes.copy_button}
-              >
-                Copy!
-              </Mui.Button>
-            </Mui.Box>
-          </div>
-          <div>
-            <Mui.Button
-              onClick={handleNewColor}
-              variant="contained"
-              color="primary"
-              endIcon={<AutoFixHighIcon />}
-              sx={{
-                backgroundColor: "primary.dark",
-                boxShadow: "0 0 .4em black",
-                maxWidth: 1/1,
-              }}
-            >Generate!</Mui.Button>
-          </div>
+          <ColorBox />
+          <GeneratorButton />
         </div>
       </Mui.Stack>
     </>
   );
+  function ColorBox() {
+    return (
+      <div>
+        <Mui.Box
+          sx={{
+            backgroundColor: hexColor,
+            borderRadius: 2,
+            boxShadow: "0 0 .4em black",
+            maxWidth: 1/1,
+            p: 10,
+            textAlign: "center",
+          }}
+        >
+          <Mui.Button
+            onClick={copyMessage}
+            variant="contained"
+            color="secondary"
+            endIcon={<FormatPaintIcon />}
+            sx={{
+              backgroundColor: "rgba(0, 0, 0, .4)",
+            }}
+            className={classes.copy_button}
+          >
+            Copy!
+          </Mui.Button>
+        </Mui.Box>
+      </div>
+    )
+  }
+  function GeneratorButton() {
+    return(
+      <div>
+        <Mui.Button
+          onClick={handleNewColor}
+          variant="contained"
+          color="primary"
+          endIcon={<AutoFixHighIcon />}
+          sx={{
+            backgroundColor: "primary.dark",
+            boxShadow: "0 0 .4em black",
+            maxWidth: 1/1,
+          }}
+        >Generate!</Mui.Button>
+      </div>
+    )
+  }
 }
+
 
 export default App;
