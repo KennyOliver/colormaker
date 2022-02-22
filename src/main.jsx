@@ -9,11 +9,11 @@ const customTheme = createTheme({
   palette: {
     primary: {
       main: teal[500],
-      contrast: "#000000"
+      contrast: "#000000",
     },
     secondary: {
-      main: teal[500]
-    }
+      main: teal[500],
+    },
   },
   typography: {
     fontFamily: [
