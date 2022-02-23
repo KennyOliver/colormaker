@@ -1,5 +1,5 @@
 # ColorMaker — `mui-color-gen`
-<img src="https://user-images.githubusercontent.com/70860732/155225425-681d2d12-179a-4b6b-9060-deb80c60a7cf.png" width="50%" align="right" />
+<img src="preview_Chrome_iPhone_SE.png" width="50%" align="right" />
 
 Try it out: [colormaker.vercel.app](https://colormaker.vercel.app)
 

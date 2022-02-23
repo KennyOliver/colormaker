@@ -10,7 +10,7 @@ import PaletteIcon from '@mui/icons-material/Palette';
 
 
 const App = () => {
-  const [hexColor, setHexColor]           = useState("#3CB371");
+  const [hexColor, setHexColor]           = useState("#FDE442");
   const [snackOpen, setSnackOpen]         = useState(false);
   const [snackColorMsg, setSnackColorMsg] = useState(hexColor);
   const [selectedRadio, setSelectedRadio] = useState("HEX");
