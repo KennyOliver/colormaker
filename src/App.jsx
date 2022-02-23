@@ -24,18 +24,27 @@ const App = () => {
   function handleCopy() {
     let result;
     switch (selectedRadio) {
-      case "HEX":   result = hexColor; break;
-      case "RGB":   result = CLR_CVRT.hex.rgb(hexColor); break;
-      case "HSL":   result = CLR_CVRT.hex.hsl(hexColor); break;
-      case "CMYK":  result = CLR_CVRT.hex.cmyk(hexColor); break;
+      case "HEX":  result = hexColor; break;
+      case "RGB":
+        let asRGB = CLR_CVRT.hex.rgb(hexColor);
+        result = `${asRGB[0]}, ${asRGB[1]}, ${asRGB[2]}`;
+        break;
+      case "HSL":
+        let asHSL = CLR_CVRT.hex.hsl(hexColor);
+        result = `${asHSL[0]}%, ${asHSL[1]}%, ${asHSL[2]}%`;
+        break;
+      case "CMYK":
+        let asCMYK = CLR_CVRT.hex.cmyk(hexColor);
+        result = `${asCMYK[0]}%, ${asCMYK[1]}%, ${asCMYK[2]}, ${asCMYK[3]}%`;
+        break;
       default:      result = hexColor;
     }
     setSnackColorMsg(result);
     
     console.log(
-      `Copied: ${hexColor}\t\tColor Space: ${selectedRadio}\t\tResult: ${snackColorMsg}`
+      `Copied: ${hexColor}\t\tColor Space: ${selectedRadio}\t\tResult: ${result}`
     );
-    navigator.clipboard.writeText(snackColorMsg);
+    navigator.clipboard.writeText(result);
     setSnackOpen(true);
   }
   function handleRadioChange({ target }) {
