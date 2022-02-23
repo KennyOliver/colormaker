@@ -17,7 +17,7 @@ const App = () => {
   
   function handleNewColor() {
     let HEX = Math.floor(Math.random() * (16 ** 6)).toString(16);
-    HEX = "#" + HEX.toUpperCase();
+    HEX = "#" + HEX.toUpperCase().padStart(6, "0");
     console.log(`${HEX}`);
     setHexColor(HEX);
   }
