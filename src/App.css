@@ -1,18 +1,19 @@
 @keyframes wriggle {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(5deg);
-  }
+  0%, 100% {transform: rotate(0deg);}
+  25% {transform: rotate(-5deg);}
+  50% {transform: rotate(0deg);}
+  75% {transform: rotate(5deg);}
 }
 
+#title-and-subtitle-container {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+#title-and-subtitle-container > p {
+  margin: .2em;
+}
 .colored-header {
   background: #F94D4D;
   background: linear-gradient(to right, #F94D4D, #30E8BF, #5300FA);
@@ -20,6 +21,7 @@
   text-align: center;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  width: auto;
 }
 .colored-header ~ #subtitle {
   color: rgba(255, 255, 255, 0.3);

@@ -35,9 +35,9 @@ const App = () => {
   return (
     <>
       <Mui.Stack spacing={2}>
-        <div>
+        <div id="title-and-subtitle-container">
           <h1 className="colored-header">&lt;ColorMaker /&gt;</h1>
-          <p id="subtitle">a random color generator</p>
+          <p id="subtitle">random color generator</p>
           <p id="credits">Made by <a href="https://github.com/KennyOliver">Kenneth Oliver</a></p>
         </div>
         <div className="flex-container">
