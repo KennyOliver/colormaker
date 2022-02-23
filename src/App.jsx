@@ -10,6 +10,7 @@ import PaletteIcon from '@mui/icons-material/Palette';
 const App = () => {
   const [hexColor, setHexColor] = useState("#3CB371");
   const [snackOpen, setSnackOpen] = useState(false);
+  const [sliderValue, setSliderValue] = useState(3);
   
   function handleNewColor() {
     let HEX = Math.floor(Math.random() * (16 ** 6)).toString(16);
@@ -38,6 +39,20 @@ const App = () => {
         </div>
         <div className="flex-container">
           <ColorBox />
+          <Mui.FormControl>
+            <Mui.FormLabel id="radios-label">Color Space</Mui.FormLabel>
+            <Mui.RadioGroup
+              id="radio-group"
+              row
+              defaultValue="HEX"
+              name="radio-buttons-group"
+            >
+              <Mui.FormControlLabel value="HEX" control={<Mui.Radio />} label="HEX" />
+              <Mui.FormControlLabel value="RGB" control={<Mui.Radio />} label="RGB" />
+              <Mui.FormControlLabel value="HSL" control={<Mui.Radio />} label="HSL" />
+              <Mui.FormControlLabel value="CMYK" control={<Mui.Radio />} label="CMYK" />
+            </Mui.RadioGroup>
+          </Mui.FormControl>
           <GeneratorButton />
         </div>
       </Mui.Stack>

@@ -50,6 +50,13 @@
   -webkit-text-fill-color: transparent;
 }
 
+#radios-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+#radio-group {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .flex-container {
   align-items: center;
   display: flex;

@@ -18,6 +18,7 @@ const customTheme = createTheme({
   typography: {
     fontFamily: [
       "Poppins",
+      "Quicksand",
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
