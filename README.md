@@ -18,7 +18,7 @@ There was a bit of a learning curve, and I did refer to the documentation many t
 
 <img src="https://user-images.githubusercontent.com/70860732/155218584-4a63ba0f-6557-40de-8b89-f88691aa7709.png" width="50%" align="right" />
 
-I had previously built a random color generator, specifically for named CSS colors. I thought I had registered it with Vercel ([random-color-gen.vercel.app](https://random-color-gen.vercel.app)).
+I had previously built a random color generator, specifically for named CSS colors. I thought I had registered it with Vercel ([random-color-gen.vercel.app](https://random-color-gen.vercel.app)), but it turns out I didn't.
 
 I had a look at the website, and it inspired me to make this React app. Fear not, I made all of the code myself!
 
