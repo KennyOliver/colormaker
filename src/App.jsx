@@ -31,7 +31,7 @@ const App = () => {
         break;
       case "HSL":
         let asHSL = CLR_CVRT.hex.hsl(hexColor);
-        result = `${asHSL[0]}%, ${asHSL[1]}%, ${asHSL[2]}%`;
+        result = `${asHSL[0]}\u00B0, ${asHSL[1]}%, ${asHSL[2]}%`;
         break;
       case "CMYK":
         let asCMYK = CLR_CVRT.hex.cmyk(hexColor);
