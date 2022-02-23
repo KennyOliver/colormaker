@@ -39,20 +39,7 @@ const App = () => {
         </div>
         <div className="flex-container">
           <ColorBox />
-          <Mui.FormControl>
-            <Mui.FormLabel id="radios-label">Color Space</Mui.FormLabel>
-            <Mui.RadioGroup
-              id="radio-group"
-              row
-              defaultValue="HEX"
-              name="radio-buttons-group"
-            >
-              <Mui.FormControlLabel value="HEX" control={<Mui.Radio />} label="HEX" />
-              <Mui.FormControlLabel value="RGB" control={<Mui.Radio />} label="RGB" />
-              <Mui.FormControlLabel value="HSL" control={<Mui.Radio />} label="HSL" />
-              <Mui.FormControlLabel value="CMYK" control={<Mui.Radio />} label="CMYK" />
-            </Mui.RadioGroup>
-          </Mui.FormControl>
+          <ColorSpaceRadios />
           <GeneratorButton />
         </div>
       </Mui.Stack>
@@ -86,6 +73,24 @@ const App = () => {
           </Mui.Button>
         </Mui.Box>
       </div>
+    )
+  }
+  function ColorSpaceRadios() {
+    return (
+      <Mui.FormControl>
+        <Mui.FormLabel id="radios-label">Color Space</Mui.FormLabel>
+        <Mui.RadioGroup
+          id="radio-group"
+          row
+          defaultValue="HEX"
+          name="radio-buttons-group"
+        >
+          <Mui.FormControlLabel value="HEX" control={<Mui.Radio />} label="HEX" />
+          <Mui.FormControlLabel value="RGB" control={<Mui.Radio />} label="RGB" />
+          <Mui.FormControlLabel value="HSL" control={<Mui.Radio />} label="HSL" />
+          <Mui.FormControlLabel value="CMYK" control={<Mui.Radio />} label="CMYK" />
+        </Mui.RadioGroup>
+      </Mui.FormControl>
     )
   }
   function GeneratorButton() {
