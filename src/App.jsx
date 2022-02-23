@@ -10,7 +10,7 @@ import PaletteIcon from '@mui/icons-material/Palette';
 const App = () => {
   const [hexColor, setHexColor] = useState("#3CB371");
   const [snackOpen, setSnackOpen] = useState(false);
-  const [sliderValue, setSliderValue] = useState(3);
+  const [selectedRadio, setSelectedRadio] = useState("HEX");
   
   function handleNewColor() {
     let HEX = Math.floor(Math.random() * (16 ** 6)).toString(16);
@@ -18,15 +18,18 @@ const App = () => {
     console.log(`${HEX}`);
     setHexColor(HEX);
   }
-  function copyMessage() {
-    console.log(`Copied: ${hexColor}`);
+  function handleCopy() {
+    console.log(`Copied: ${hexColor}\t\tColor Space: ${selectedRadio}`);
     navigator.clipboard.writeText(hexColor);
     setSnackOpen(true);
   }
   function handleSnackClose(event, reason) {
     // if (reason !== "clickaway") return;
-    console.log(false);
     setSnackOpen(false);
+  }
+  function handleRadioChange({ target }) {
+    console.log(`Color Space: ${target.value}`);
+    setSelectedRadio(target.value);
   }
   
   return (
@@ -61,7 +64,7 @@ const App = () => {
           }}
         >
           <Mui.Button
-            onClick={copyMessage}
+            onClick={handleCopy}
             variant="contained"
             color="secondary"
             endIcon={<FormatPaintIcon />}
@@ -81,14 +84,15 @@ const App = () => {
         <Mui.FormLabel id="radios-label">Color Space</Mui.FormLabel>
         <Mui.RadioGroup
           id="radio-group"
-          row
-          defaultValue="HEX"
+          onChange={handleRadioChange}
           name="radio-buttons-group"
+          defaultValue={selectedRadio}
+          row
         >
-          <Mui.FormControlLabel value="HEX" control={<Mui.Radio />} label="HEX" />
-          <Mui.FormControlLabel value="RGB" control={<Mui.Radio />} label="RGB" />
-          <Mui.FormControlLabel value="HSL" control={<Mui.Radio />} label="HSL" />
-          <Mui.FormControlLabel value="CMYK" control={<Mui.Radio />} label="CMYK" />
+          <Mui.FormControlLabel value="HEX" labelPlacement="bottom" control={<Mui.Radio />} label="HEX" />
+          <Mui.FormControlLabel value="RGB" labelPlacement="bottom" control={<Mui.Radio />} label="RGB" />
+          <Mui.FormControlLabel value="HSL" labelPlacement="bottom" control={<Mui.Radio />} label="HSL" />
+          <Mui.FormControlLabel value="CMYK" labelPlacement="bottom" control={<Mui.Radio />} label="CMYK" />
         </Mui.RadioGroup>
       </Mui.FormControl>
     )

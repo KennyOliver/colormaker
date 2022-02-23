@@ -52,6 +52,7 @@
 
 #radios-label {
   color: rgba(255, 255, 255, 0.8);
+  text-align: center;
 }
 #radio-group {
   color: rgba(255, 255, 255, 0.6);
