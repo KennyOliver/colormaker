@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
+import * as CLR_CVRT from "color-convert";
+
 import * as Mui from "@mui/material";
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import FormatPaintIcon from '@mui/icons-material/FormatPaint';
@@ -8,8 +10,9 @@ import PaletteIcon from '@mui/icons-material/Palette';
 
 
 const App = () => {
-  const [hexColor, setHexColor] = useState("#3CB371");
-  const [snackOpen, setSnackOpen] = useState(false);
+  const [hexColor, setHexColor]           = useState("#3CB371");
+  const [snackOpen, setSnackOpen]         = useState(false);
+  const [snackColorMsg, setSnackColorMsg] = useState(hexColor);
   const [selectedRadio, setSelectedRadio] = useState("HEX");
   
   function handleNewColor() {
@@ -19,17 +22,29 @@ const App = () => {
     setHexColor(HEX);
   }
   function handleCopy() {
-    console.log(`Copied: ${hexColor}\t\tColor Space: ${selectedRadio}`);
-    navigator.clipboard.writeText(hexColor);
+    let result;
+    switch (selectedRadio) {
+      case "HEX":   result = hexColor; break;
+      case "RGB":   result = CLR_CVRT.hex.rgb(hexColor); break;
+      case "HSL":   result = CLR_CVRT.hex.hsl(hexColor); break;
+      case "CMYK":  result = CLR_CVRT.hex.cmyk(hexColor); break;
+      default:      result = hexColor;
+    }
+    setSnackColorMsg(result);
+    
+    console.log(
+      `Copied: ${hexColor}\t\tColor Space: ${selectedRadio}\t\tResult: ${snackColorMsg}`
+    );
+    navigator.clipboard.writeText(snackColorMsg);
     setSnackOpen(true);
-  }
-  function handleSnackClose(event, reason) {
-    // if (reason !== "clickaway") return;
-    setSnackOpen(false);
   }
   function handleRadioChange({ target }) {
     console.log(`Color Space: ${target.value}`);
     setSelectedRadio(target.value);
+  }
+  function handleSnackClose(event, reason) {
+    // if (reason !== "clickaway") return;
+    setSnackOpen(false);
   }
   
   return (
@@ -124,7 +139,7 @@ const App = () => {
       >
         <Mui.Alert icon={<PaletteIcon sx={{color: hexColor}} />} severity="success" sx={{background: "#363636", color: "white"}}>
           <Mui.AlertTitle>Success!</Mui.AlertTitle>
-          I've copied <span style={{color: hexColor}}>{hexColor}</span> for you!
+          I've copied <span style={{color: hexColor}}>{snackColorMsg}</span> for you!
         </Mui.Alert>
       </Mui.Snackbar>
     )
