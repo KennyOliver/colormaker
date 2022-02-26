@@ -9,35 +9,35 @@ import FormatPaintIcon from '@mui/icons-material/FormatPaint';
 import PaletteIcon from '@mui/icons-material/Palette';
 
 
-const App = () => {
-  const [hexColor, setHexColor]           = useState("#FDE442");
-  const [snackOpen, setSnackOpen]         = useState(false);
-  const [snackColorMsg, setSnackColorMsg] = useState(hexColor);
-  const [selectedRadio, setSelectedRadio] = useState("HEX");
+const App: React.FC = (): void => {
+  const [hexColor, setHexColor] = useState<string>("#FDE442");
+  const [snackOpen, setSnackOpen] = useState<boolean>(false);
+  const [snackColorMsg, setSnackColorMsg] = useState<string>(hexColor);
+  const [selectedRadio, setSelectedRadio] = useState<string>("HEX");
   
-  function handleNewColor() {
+  function handleNewColor(): void {
     let HEX = Math.floor(Math.random() * (16 ** 6)).toString(16);
     HEX = "#" + HEX.toUpperCase().padStart(6, "0");
     console.log(`${HEX}`);
     setHexColor(HEX);
   }
-  function handleCopy() {
-    let result;
+  function handleCopy(): void {
+    let result: string;
     switch (selectedRadio) {
       case "HEX":  result = hexColor; break;
       case "RGB":
-        let asRGB = CLR_CVRT.hex.rgb(hexColor);
+        let asRGB: string = CLR_CVRT.hex.rgb(hexColor);
         result = `${asRGB[0]}, ${asRGB[1]}, ${asRGB[2]}`;
         break;
       case "HSL":
-        let asHSL = CLR_CVRT.hex.hsl(hexColor);
+        let asHSL: string = CLR_CVRT.hex.hsl(hexColor);
         result = `${asHSL[0]}\u00B0, ${asHSL[1]}%, ${asHSL[2]}%`;
         break;
       case "CMYK":
-        let asCMYK = CLR_CVRT.hex.cmyk(hexColor);
+        let asCMYK: string = CLR_CVRT.hex.cmyk(hexColor);
         result = `${asCMYK[0]}%, ${asCMYK[1]}%, ${asCMYK[2]}, ${asCMYK[3]}%`;
         break;
-      default:      result = hexColor;
+      default: result = hexColor;
     }
     setSnackColorMsg(result);
     
@@ -47,11 +47,11 @@ const App = () => {
     navigator.clipboard.writeText(result);
     setSnackOpen(true);
   }
-  function handleRadioChange({ target }) {
+  function handleRadioChange({ target }): void {
     console.log(`Color Space: ${target.value}`);
     setSelectedRadio(target.value);
   }
-  function handleSnackClose(event, reason) {
+  function handleSnackClose(event, reason): void {
     // if (reason !== "clickaway") return;
     setSnackOpen(false);
   }

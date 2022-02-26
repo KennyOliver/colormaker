@@ -1,10 +1,8 @@
+import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 
-/**
- * https://vitejs.dev/config/
- * @type { import('vite').UserConfig }
- */
-export default {
+// https://vitejs.dev/config/
+export default defineConfig({
   plugins: [reactRefresh()],
   server: {
     host: '0.0.0.0',
@@ -12,4 +10,4 @@ export default {
       port: 443,
     }
   }
-}
+})
